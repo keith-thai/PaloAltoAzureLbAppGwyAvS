@@ -27,16 +27,13 @@
        "allowedValues": [
           "Standard_D3",
           "Standard_D4",
-          "Standard_D3_v2",
           "Standard_D4_v2",
-          "Standard_D5_v2",
-          "Standard_D14_v2", 
-          "Standard_A4"
+          "Standard_D5_v2"
        ],
        "metadata": {
           "description": "Azure VM size for VM-Series"
        },
-       "defaultValue": "Standard_D3"
+       "defaultValue": "Standard_D4_v2"
     },
     "imageSku": {
        "type": "string",
@@ -48,14 +45,14 @@
        "metadata": {
           "description": "byol = Bring Your Own License; bundle1 = Bundle 1 PAYG (Hourly); bundle2 = Bundle 2 PAYG (Hourly)"
        },
-       "defaultValue": "byol"
+       "defaultValue": "bundle2"
     },
     "virtualNetworkName": { 
       "type": "string",
       "metadata": {
         "description": "Name of the Virtual Network (VNET)"
       },
-      "defaultValue": "fwVNET"
+      "defaultValue": "VNET-WUS2-Hub"
     },
     "virtualNetworkExistingRGName": {
       "type": "string",
@@ -66,23 +63,23 @@
     },
     "subnet0Name": {
       "type": "string",
-      "defaultValue": "Mgmt",
+      "defaultValue": "VNET-WUS2-Hub-Mgmt",
       "metadata": {
-        "description": "Subnet for Management"
+        "description": "Subnet VNET-WUS2-Hub-Mgmt for Management"
       }
     },
     "subnet1Name": {
       "type": "string",
-      "defaultValue": "Untrust",
+      "defaultValue": "VNET-WUS2-Hub-Untrust",
       "metadata": {
-        "description": "Subnet for Untrust"
+        "description": "Subnet for VNET-WUS2-Hub-Untrust"
       }
     },
     "subnet2Name": {
       "type": "string",
-      "defaultValue": "Trust",
+      "defaultValue": "VNET-WUS2-Hub-Trust",
       "metadata": {
-        "description": "Subnet for Trust"
+        "description": "Subnet for VNET-WUS2-Hub-Trust"
       }
     },
     "subnetLBName": {
@@ -94,28 +91,28 @@
     },
     "subnet0Prefix": {
       "type": "string",
-      "defaultValue": "192.168.0.0/24",
+      "defaultValue": "10.0.0.0/24",
       "metadata": {
         "description": "Mgmt subnet CIDR"
       }
     },
     "subnet1Prefix": {
       "type": "string",
-      "defaultValue": "192.168.1.0/24",
+      "defaultValue": "10.0.1.0/24",
       "metadata": {
         "description": "Untrust subnet CIDR"
       }
     },
     "subnet2Prefix": {
       "type": "string",
-      "defaultValue": "192.168.2.0/24",
+      "defaultValue": "10.0.2.0/24",
       "metadata": {
         "description": "Trust subnet CIDR"
       }
     },
     "subnetLBPrefix": {
       "type": "string",
-      "defaultValue": "192.168.3.0/24",
+      "defaultValue": "10.0.3.0/24",
       "metadata": {
         "description": "App Gateway subnet CIDR"
       }
@@ -142,7 +139,7 @@
     },
     "MgmtPublicIPAddressName": {
       "type": "string",
-      "defaultValue": "vm-servies-pib-mgmt",
+      "defaultValue": "PIP-WUS2-Hub-Mgmt",
       "metadata": {
         "description": "Name of public IP resource for mgmt interface"
       }

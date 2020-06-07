@@ -22,21 +22,21 @@
     },
     "subnet0Name": {
       "type": "string",
-      "defaultValue": "Mgmt",
+      "defaultValue": "VNET-WUS2-Hub-Mgmt",
       "metadata": {
         "description": "Subnet for Management"
       }
     },
     "subnet1Name": {
       "type": "string",
-      "defaultValue": "Untrust",
+      "defaultValue": "VNET-WUS2-Hub-Untrust",
       "metadata": {
         "description": "Subnet for Untrust"
       }
     },
     "subnet2Name": {
       "type": "string",
-      "defaultValue": "Trust",
+      "defaultValue": "VNET-WUS2-Hub-Trust",
       "metadata": {
         "description": "Subnet for Trust"
       }

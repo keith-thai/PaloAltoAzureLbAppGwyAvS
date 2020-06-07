@@ -8,37 +8,37 @@
     },
     "virtualNetworkName": {
       "type": "string",
-      "defaultValue": "vnet-FW",
+      "defaultValue": "VNET-WUS2-Hub",
       "metadata": {
         "description": "VNET name"
       }
     },
     "virtualNetworkAddressPrefix": {
       "type": "string",
-      "defaultValue": "192.168.0.0/16",
+      "defaultValue": "10.0.0.0/16",
       "metadata": {
         "description": "CIDR for vnet"
       }
     },
     "subnet0Name": {
       "type": "string",
-      "defaultValue": "Mgmt",
+      "defaultValue": "VNET-WUS2-Hub-Mgmt",
       "metadata": {
-        "description": "Subnet for Management"
+        "description": "Subnet for VNET-WUS2-Hub-Mgmt Management"
       }
     },
     "subnet1Name": {
       "type": "string",
-      "defaultValue": "Untrust",
+      "defaultValue": "VNET-WUS2-Hub-Untrust",
       "metadata": {
-        "description": "Subnet for Untrust"
+        "description": "Subnet for VNET-WUS2-Hub-Untrust"
       }
     },
     "subnet2Name": {
       "type": "string",
-      "defaultValue": "Trust",
+      "defaultValue": "VNET-WUS2-Hub-Trust",
       "metadata": {
-        "description": "Subnet for Trust"
+        "description": "Subnet for VNET-WUS2-Hub-Trust"
       }
     },
     "subnetLBName": {
@@ -57,35 +57,35 @@
     },
     "subnet0Prefix": {
       "type": "string",
-      "defaultValue": "192.168.0.0/24",
+      "defaultValue": "10.0.0.0/24",
       "metadata": {
         "description": "Mgmt subnet CIDR"
       }
     },
     "subnet1Prefix": {
       "type": "string",
-      "defaultValue": "192.168.1.0/24",
+      "defaultValue": "10.0.1.0/24",
       "metadata": {
         "description": "Untrust subnet CIDR"
       }
     },
     "subnet2Prefix": {
       "type": "string",
-      "defaultValue": "192.168.2.0/24",
+      "defaultValue": "10.0.2.0/24",
       "metadata": {
         "description": "Trust subnet CIDR"
       }
     },
     "subnetLBPrefix": {
       "type": "string",
-      "defaultValue": "192.168.3.0/24",
+      "defaultValue": "10.0.3.0/24",
       "metadata": {
         "description": "App Gateway CIDR"
       }
     },
     "subnetWWWPrefix": {
       "type": "string",
-      "defaultValue": "192.168.4.0/24",
+      "defaultValue": "10.0.4.0/24",
       "metadata": {
         "description": "backend WWW CIDR"
       }

@@ -1,494 +1,535 @@
-<?xml version="1.0"?>
-<config version="7.1.0" urldb="paloaltonetworks">
-  <mgt-config>
-    <users>
-      <entry name="admin">
-        <phash>*</phash>
-        <permissions>
-          <role-based>
-            <superuser>yes</superuser>
-          </role-based>
-        </permissions>
-      </entry>
-      <entry name="pandemo">
-        <permissions>
-          <role-based>
-            <superuser>yes</superuser>
-          </role-based>
-        </permissions>
-        <phash>$1$ljjdxeva$.isIbumicIMfaHvG/EKqd.</phash>
-      </entry>
-    </users>
-  </mgt-config>
-  <shared>
-    <application/>
-    <application-group/>
-    <service/>
-    <service-group/>
-    <botnet>
-      <configuration>
-        <http>
-          <dynamic-dns>
-            <enabled>yes</enabled>
-            <threshold>5</threshold>
-          </dynamic-dns>
-          <malware-sites>
-            <enabled>yes</enabled>
-            <threshold>5</threshold>
-          </malware-sites>
-          <recent-domains>
-            <enabled>yes</enabled>
-            <threshold>5</threshold>
-          </recent-domains>
-          <ip-domains>
-            <enabled>yes</enabled>
-            <threshold>10</threshold>
-          </ip-domains>
-          <executables-from-unknown-sites>
-            <enabled>yes</enabled>
-            <threshold>5</threshold>
-          </executables-from-unknown-sites>
-        </http>
-        <other-applications>
-          <irc>yes</irc>
-        </other-applications>
-        <unknown-applications>
-          <unknown-tcp>
-            <destinations-per-hour>10</destinations-per-hour>
-            <sessions-per-hour>10</sessions-per-hour>
-            <session-length>
-              <maximum-bytes>100</maximum-bytes>
-              <minimum-bytes>50</minimum-bytes>
-            </session-length>
-          </unknown-tcp>
-          <unknown-udp>
-            <destinations-per-hour>10</destinations-per-hour>
-            <sessions-per-hour>10</sessions-per-hour>
-            <session-length>
-              <maximum-bytes>100</maximum-bytes>
-              <minimum-bytes>50</minimum-bytes>
-            </session-length>
-          </unknown-udp>
-        </unknown-applications>
-      </configuration>
-      <report>
-        <topn>100</topn>
-        <scheduled>yes</scheduled>
-      </report>
-    </botnet>
-  </shared>
-  <devices>
-    <entry name="localhost.localdomain">
-      <network>
-        <interface>
-          <ethernet>
-            <entry name="ethernet1/1">
-              <layer3>
-                <ipv6>
-                  <neighbor-discovery>
-                    <router-advertisement>
-                      <enable>no</enable>
-                    </router-advertisement>
-                  </neighbor-discovery>
-                </ipv6>
-                <ndp-proxy>
-                  <enabled>no</enabled>
-                </ndp-proxy>
-                <lldp>
-                  <enable>no</enable>
-                </lldp>
-                <dhcp-client/>
-              </layer3>
-            </entry>
-            <entry name="ethernet1/2">
-              <layer3>
-                <ipv6>
-                  <neighbor-discovery>
-                    <router-advertisement>
-                      <enable>no</enable>
-                    </router-advertisement>
-                  </neighbor-discovery>
-                </ipv6>
-                <ndp-proxy>
-                  <enabled>no</enabled>
-                </ndp-proxy>
-                <dhcp-client>
-                  <create-default-route>no</create-default-route>
-                </dhcp-client>
-                <lldp>
-                  <enable>no</enable>
-                </lldp>
-              </layer3>
-            </entry>
-          </ethernet>
-        </interface>
-        <profiles>
-          <monitor-profile>
-            <entry name="default">
-              <interval>3</interval>
-              <threshold>5</threshold>
-              <action>wait-recover</action>
-            </entry>
-          </monitor-profile>
-        </profiles>
-        <ike>
-          <crypto-profiles>
-            <ike-crypto-profiles>
-              <entry name="default">
-                <encryption>
-                  <member>aes-128-cbc</member>
-                  <member>3des</member>
-                </encryption>
-                <hash>
-                  <member>sha1</member>
-                </hash>
-                <dh-group>
-                  <member>group2</member>
-                </dh-group>
-                <lifetime>
-                  <hours>8</hours>
-                </lifetime>
-              </entry>
-              <entry name="Suite-B-GCM-128">
-                <encryption>
-                  <member>aes-128-cbc</member>
-                </encryption>
-                <hash>
-                  <member>sha256</member>
-                </hash>
-                <dh-group>
-                  <member>group19</member>
-                </dh-group>
-                <lifetime>
-                  <hours>8</hours>
-                </lifetime>
-              </entry>
-              <entry name="Suite-B-GCM-256">
-                <encryption>
-                  <member>aes-256-cbc</member>
-                </encryption>
-                <hash>
-                  <member>sha384</member>
-                </hash>
-                <dh-group>
-                  <member>group20</member>
-                </dh-group>
-                <lifetime>
-                  <hours>8</hours>
-                </lifetime>
-              </entry>
-            </ike-crypto-profiles>
-            <ipsec-crypto-profiles>
-              <entry name="default">
-                <esp>
-                  <encryption>
-                    <member>aes-128-cbc</member>
-                    <member>3des</member>
-                  </encryption>
-                  <authentication>
-                    <member>sha1</member>
-                  </authentication>
-                </esp>
-                <dh-group>group2</dh-group>
-                <lifetime>
-                  <hours>1</hours>
-                </lifetime>
-              </entry>
-              <entry name="Suite-B-GCM-128">
-                <esp>
-                  <encryption>
-                    <member>aes-128-gcm</member>
-                  </encryption>
-                  <authentication>
-                    <member>none</member>
-                  </authentication>
-                </esp>
-                <dh-group>group19</dh-group>
-                <lifetime>
-                  <hours>1</hours>
-                </lifetime>
-              </entry>
-              <entry name="Suite-B-GCM-256">
-                <esp>
-                  <encryption>
-                    <member>aes-256-gcm</member>
-                  </encryption>
-                  <authentication>
-                    <member>none</member>
-                  </authentication>
-                </esp>
-                <dh-group>group20</dh-group>
-                <lifetime>
-                  <hours>1</hours>
-                </lifetime>
-              </entry>
-            </ipsec-crypto-profiles>
-            <global-protect-app-crypto-profiles>
-              <entry name="default">
-                <encryption>
-                  <member>aes-128-cbc</member>
-                </encryption>
-                <authentication>
-                  <member>sha1</member>
-                </authentication>
-              </entry>
-            </global-protect-app-crypto-profiles>
-          </crypto-profiles>
-        </ike>
-        <qos>
-          <profile>
-            <entry name="default">
-              <class>
-                <entry name="class1">
-                  <priority>real-time</priority>
-                </entry>
-                <entry name="class2">
-                  <priority>high</priority>
-                </entry>
-                <entry name="class3">
-                  <priority>high</priority>
-                </entry>
-                <entry name="class4">
-                  <priority>medium</priority>
-                </entry>
-                <entry name="class5">
-                  <priority>medium</priority>
-                </entry>
-                <entry name="class6">
-                  <priority>low</priority>
-                </entry>
-                <entry name="class7">
-                  <priority>low</priority>
-                </entry>
-                <entry name="class8">
-                  <priority>low</priority>
-                </entry>
-              </class>
-            </entry>
-          </profile>
-        </qos>
-        <virtual-router>
-          <entry name="default">
-            <protocol>
-              <bgp>
-                <enable>no</enable>
-                <dampening-profile>
-                  <entry name="default">
-                    <cutoff>1.25</cutoff>
-                    <reuse>0.5</reuse>
-                    <max-hold-time>900</max-hold-time>
-                    <decay-half-life-reachable>300</decay-half-life-reachable>
-                    <decay-half-life-unreachable>900</decay-half-life-unreachable>
-                    <enable>yes</enable>
-                  </entry>
-                </dampening-profile>
-                <routing-options>
-                  <graceful-restart>
-                    <enable>yes</enable>
-                  </graceful-restart>
-                </routing-options>
-              </bgp>
-            </protocol>
-            <interface>
-              <member>ethernet1/1</member>
-              <member>ethernet1/2</member>
-            </interface>
-            <ecmp>
-              <algorithm>
-                <ip-modulo/>
-              </algorithm>
-            </ecmp>
-            <routing-table>
-              <ip>
-                <static-route>
-                  <entry name="appgw">
-                    <nexthop>
-                      <ip-address>192.168.1.1</ip-address>
-                    </nexthop>
-                    <bfd>
-                      <profile>None</profile>
-                    </bfd>
-                    <interface>ethernet1/1</interface>
-                    <metric>10</metric>
-                    <destination>0.0.0.0/0</destination>
-                  </entry>
-                </static-route>
-              </ip>
-            </routing-table>
-          </entry>
-        </virtual-router>
-      </network>
-      <deviceconfig>
-        <system>
-          <update-server>updates.paloaltonetworks.com</update-server>
-          <update-schedule>
-            <threats>
-              <recurring>
-                <weekly>
-                  <day-of-week>wednesday</day-of-week>
-                  <at>01:02</at>
-                  <action>download-only</action>
-                </weekly>
-              </recurring>
-            </threats>
-          </update-schedule>
-          <timezone>US/Pacific</timezone>
-          <service>
-            <disable-telnet>yes</disable-telnet>
-            <disable-http>yes</disable-http>
-          </service>
-          <type>
-            <dhcp-client>
-              <send-hostname>yes</send-hostname>
-              <send-client-id>no</send-client-id>
-              <accept-dhcp-hostname>no</accept-dhcp-hostname>
-              <accept-dhcp-domain>no</accept-dhcp-domain>
-            </dhcp-client>
-          </type>
-        </system>
-        <setting>
-          <config>
-            <rematch>yes</rematch>
-          </config>
-        </setting>
-      </deviceconfig>
-      <vsys>
-        <entry name="vsys1">
-          <application/>
-          <application-group/>
-          <zone>
-            <entry name="untrust">
-              <network>
-                <layer3>
-                  <member>ethernet1/1</member>
-                </layer3>
-              </network>
-            </entry>
-            <entry name="trust">
-              <network>
-                <layer3>
-                  <member>ethernet1/2</member>
-                </layer3>
-              </network>
-            </entry>
-          </zone>
-          <service/>
-          <service-group/>
-          <schedule/>
-          <rulebase>
-            <security>
-              <rules>
-                <entry name="allow_http">
-                  <to>
-                    <member>any</member>
-                  </to>
-                  <from>
-                    <member>any</member>
-                  </from>
-                  <source>
-                    <member>any</member>
-                  </source>
-                  <destination>
-                    <member>any</member>
-                  </destination>
-                  <source-user>
-                    <member>any</member>
-                  </source-user>
-                  <category>
-                    <member>any</member>
-                  </category>
-                  <application>
-                    <member>any</member>
-                  </application>
-                  <service>
-                    <member>service-http</member>
-                  </service>
-                  <hip-profiles>
-                    <member>any</member>
-                  </hip-profiles>
-                  <action>allow</action>
-                </entry>
-                <entry name="deny_all">
-                  <to>
-                    <member>any</member>
-                  </to>
-                  <from>
-                    <member>any</member>
-                  </from>
-                  <source>
-                    <member>any</member>
-                  </source>
-                  <destination>
-                    <member>any</member>
-                  </destination>
-                  <source-user>
-                    <member>any</member>
-                  </source-user>
-                  <category>
-                    <member>any</member>
-                  </category>
-                  <application>
-                    <member>any</member>
-                  </application>
-                  <service>
-                    <member>any</member>
-                  </service>
-                  <hip-profiles>
-                    <member>any</member>
-                  </hip-profiles>
-                  <action>deny</action>
-                  <log-start>yes</log-start>
-                </entry>
-              </rules>
-            </security>
-            <nat>
-              <rules>
-                <entry name="ilb">
-                  <source-translation>
-                    <dynamic-ip-and-port>
-                      <interface-address>
-                        <interface>ethernet1/2</interface>
-                      </interface-address>
-                    </dynamic-ip-and-port>
-                  </source-translation>
-                  <to>
-                    <member>untrust</member>
-                  </to>
-                  <from>
-                    <member>any</member>
-                  </from>
-                  <source>
-                    <member>any</member>
-                  </source>
-                  <destination>
-                    <member>firewall-untrust-IP</member>
-                  </destination>
-                  <destination-translation>
-                    <translated-address>internal-load-balancer-IP</translated-address>
-                  </destination-translation>
-                  <service>any</service>
-                </entry>
-              </rules>
-            </nat>
-          </rulebase>
-          <import>
-            <network>
-              <interface>
-                <member>ethernet1/1</member>
-                <member>ethernet1/2</member>
-              </interface>
-            </network>
-          </import>
-          <address>
-            <entry name="firewall-untrust-IP">
-              <ip-netmask>192.168.1.4</ip-netmask>
-            </entry>
-            <entry name="internal-load-balancer-IP">
-              <ip-netmask>192.168.2.6</ip-netmask>
-            </entry>
-          </address>
-        </entry>
-      </vsys>
-    </entry>
-  </devices>
-</config>
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "networkSecurityGroupName": {
+            "type": "string",
+            "defaultValue": "NSG-WUS2-Mgmt",
+            "metadata": {
+                "description": "Network Security Group Name"
+            }
+        },
+        "networkSecurityGroupInboundSrcIP": {
+            "type": "string",
+            "metadata": {
+                "description": "HMA source public IP address. Added to the inbound NSG on eth0 (MGMT), to restrict access to the deployment."
+            },
+            "defaultValue": "0.0.0.0/0"
+        },
+        "virtualNetworkName": {
+            "type": "string",
+            "defaultValue": "VNET-WUS2-Hub",
+            "metadata": {
+                "description": "Virtual Network Name"
+            }
+        },
+        "virtualNetworkNewOrExisting": {
+            "type": "string",
+            "defaultValue": "new",
+            "allowedValues": [
+                "new",
+                "existing"
+            ],
+            "metadata": {
+                "description": "Select whether to use a new or existing Virtual Network, specified by virtualNetworkName"
+            }
+        },
+        "virtualNetworkAddressPrefix": {
+            "type": "string",
+            "defaultValue": "10.0.0.0/16",
+            "metadata": {
+                "description": "CIDR for Virtual Network"
+            }
+        },
+        "MgmtSubnetName": {
+            "type": "string",
+            "defaultValue": "VNET-WUS2-Mgmt",
+            "metadata": {
+                "description": "Subnet for Management Network"
+            }
+        },
+        "mgmtSubnetPrefix": {
+            "type": "string",
+            "defaultValue": "10.0.0.0/24",
+            "metadata": {
+                "description": "CIDR for Management Network"
+            }
+        },
+        "untrustedSubnetName": {
+            "type": "string",
+            "defaultValue": "VNET-WUS2-Untrust",
+            "metadata": {
+                "description": "Subnet for Untrusted Network"
+            }
+        },
+        "untrustedSubnetPrefix": {
+            "type": "string",
+            "defaultValue": "10.0.1.0/24",
+            "metadata": {
+                "description": "CIDR for VNET-WUS2-Untrusted Network"
+            }
+        },
+        "trustedSubnetName": {
+            "type": "string",
+            "defaultValue": "VNET-WUS2-Trust",
+            "metadata": {
+                "description": "Subnet for VNET-WUS2-Trusted Network"
+            }
+        },
+        "trustedSubnetPrefix": {
+            "type": "string",
+            "defaultValue": "10.0.2.0/24",
+            "metadata": {
+                "description": "CIDR for VNET-WUS2-Trusted Network"
+            }
+        },
+        "appGatewayName": {
+            "type": "string",
+            "defaultValue": "AGW-WUS2",
+            "metadata": {
+                "description": "App Gateway name - used to identify resource in Azure portal"
+            }
+        },
+        "appGatewayDnsName": {
+            "type": "string",
+            "metadata": {
+                "description": "App Gateway Public IP DNS Name. Must be globally unique."
+            }
+        },
+        "appGatewaySubnetName": {
+            "type": "string",
+            "defaultValue": "SNET-WUS2-Hub-AGW",
+            "metadata": {
+                "description": "Subnet for App Gateway"
+            }
+        },
+        "appGatewaySubnetPrefix": {
+            "type": "string",
+            "defaultValue": "10.0.3.0/24",
+            "metadata": {
+                "description": "CIDR for App Gateway"
+            }
+        },
+        "internalLoadBalancerName": {
+            "type": "string",
+            "defaultValue": "LB-WUS2-Internal",
+            "metadata": {
+                "description": "Internal Load Balancer name - used to identify resource in Azure portal"
+            }
+        },
+        "backendSubnetName": {
+            "type": "string",
+            "defaultValue": "backendSubnet",
+            "metadata": {
+                "description": "Subnet for Backend WWW Network"
+            }
+        },
+        "backendSubnetPrefix": {
+            "type": "string",
+            "defaultValue": "10.0.4.0/24",
+            "metadata": {
+                "description": "CIDR for Backend WWW Network"
+            }
+        },
+        "backendVmSize": {
+            "type": "string",
+            "allowedValues": [
+                "Standard_D4_v2"
+            ],
+            "metadata": {
+                "description": "Azure VM size for backend VMs.  Not all sizes are available in all regions."
+            },
+            "defaultValue": "Standard_D4_v2"
+        },
+        "firewallModel": {
+            "type": "string",
+            "defaultValue": "bundle2",
+            "allowedValues": [
+                "byol",
+                "bundle1",
+                "bundle2"
+            ],
+            "metadata": {
+                "description": "byol = Bring HMA Own License; bundle1 = Bundle 1 PAYG (Hourly); bundle2 = Bundle 2 PAYG (Hourly)"
+            }
+        },
+        "firewallVmName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name prefix of VM-Series VM in the Azure portal"
+            },
+            "defaultValue": "VM-Series"
+        },
+        "firewallVmSize": {
+            "type": "string",
+            "allowedValues": [
+                "Standard_D4_v2"
+            ],
+            "metadata": {
+                "description": "Azure VM size for VM-Series"
+            },
+            "defaultValue": "Standard_D4_v2"
+        },
+        "MgmtPublicIPAddressName": {
+            "type": "string",
+            "metadata": {
+                "description": "DNS Name prefix of public IP resource for Management interface of VM-Series firewall.  Name must be globally unique."
+            }
+        },
+        "storageAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the storage account created to store the VM's disks.  Storage account name must be globally unique."
+            }
+        },
+        "storageAccountNewOrExisting": {
+            "type": "string",
+            "defaultValue": "new",
+            "allowedValues": [
+                "new",
+                "existing"
+            ],
+            "metadata": {
+                "Description": "Select new or existing Storage Account, specified by storageAccountName"
+            }
+        },
+        "storageAccountType": {
+            "type": "string",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Premium_LRS",
+                "Standard_RAGRS"
+            ],
+            "metadata": {
+                "description": "Type of the storage account created"
+            },
+            "defaultValue": "Standard_LRS"
+        },
+        "username": {
+            "type": "string",
+            "metadata": {
+                "description": "Username of the administrator account of VM instances"
+            }
+        },
+        "authenticationType": {
+            "type": "string",
+            "metadata": {
+                "description": "Type of administrator user authentication "
+            },
+            "allowedValues": [
+                "sshPublicKey",
+                "password"
+            ],
+            "defaultValue": "password"
+        },
+        "password": {
+            "type": "securestring",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Password for the administrator account of all VM instances. Must be specified if Authentication Type is 'password'."
+            }
+        },
+        "sshPublicKey": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "SSH RSA public key file as a string. Must be specified if Authentication Type is 'sshPublicKey'."
+            }
+        }
+    },
+    "variables": {
+        "location": "[resourceGroup().location]",
+        "rgname": "[resourceGroup().name]",
+        "LoadBalancerType": "layer-7",
+        "firewallVmCount": 2,
+        "baseUrl": "https://raw.githubusercontent.com/PaloAltoNetworks/azure-applicationgateway/master/",
+        "nsgURL": "[concat(variables('baseUrl'),'/nsg-new.json')]",
+        "vnetURL": "[concat(variables('baseUrl'),'/vnet-', parameters('virtualNetworkNewOrExisting'),'.json')]",
+        "publicLBURL": "[concat(variables('baseUrl'),'/public-lb-', variables('LoadBalancerType'), '.json')]",
+        "privateLBURL": "[concat(variables('baseUrl'),'/private-lb-', parameters('authenticationType'),'.json')]",
+        "storageAccountSetupURL": "[concat(variables('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
+        "vmseriesURL": "[concat(variables('baseUrl'),'/vmseries.json')]"
+    },
+    "resources": [
+        {
+            "name": "SetupNSG",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('nsgURL')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "location": {
+                        "value": "[variables('location')]"
+                    },
+                    "nsgName": {
+                        "value": "[parameters('networkSecurityGroupName')]"
+                    },
+                    "srcIPInboundNSG": {
+                        "value": "[parameters('networkSecurityGroupInboundSrcIP')]"
+                    },
+                    "virtualNetworkAddressPrefix": {
+                        "value": "[parameters('virtualNetworkAddressPrefix')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "SetupVNET",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/SetupNSG"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('vnetURL')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "nsgName": {
+                        "value": "[parameters('networkSecurityGroupName')]"
+                    },
+                    "virtualNetworkName": {
+                        "value": "[parameters('virtualNetworkName')]"
+                    },
+                    "virtualNetworkAddressPrefix": {
+                        "value": "[parameters('virtualNetworkAddressPrefix')]"
+                    },
+                    "subnet0Name": {
+                        "value": "[parameters('MgmtSubnetName')]"
+                    },
+                    "subnet1Name": {
+                        "value": "[parameters('untrustedSubnetName')]"
+                    },
+                    "subnet2Name": {
+                        "value": "[parameters('trustedSubnetName')]"
+                    },
+                    "subnetLBName": {
+                        "value": "[parameters('appGatewaySubnetName')]"
+                    },
+                    "subnetWWWName": {
+                        "value": "[parameters('backendSubnetName')]"
+                    },
+                    "subnet0Prefix": {
+                        "value": "[parameters('mgmtSubnetPrefix')]"
+                    },
+                    "subnet1Prefix": {
+                        "value": "[parameters('untrustedSubnetPrefix')]"
+                    },
+                    "subnet2Prefix": {
+                        "value": "[parameters('trustedSubnetPrefix')]"
+                    },
+                    "subnetLBPrefix": {
+                        "value": "[parameters('appGatewaySubnetPrefix')]"
+                    },
+                    "subnetWWWPrefix": {
+                        "value": "[parameters('backendSubnetPrefix')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "SettingUpStorageAccount",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('storageAccountSetupURL')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "location": {
+                        "value": "[variables('location')]"
+                    },
+                    "storageAccountType": {
+                        "value": "[parameters('storageAccountType')]"
+                    },
+                    "storageAccountName": {
+                        "value": "[parameters('storageAccountName')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "SetupVMSeries",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/SetupVNET"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('vmseriesURL')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "lbName": {
+                        "value": "[parameters('appGatewayName')]"
+                    },
+                    "vmCount": {
+                        "value": "[variables('firewallVmCount')]"
+                    },
+                    "vmName": {
+                        "value": "[parameters('firewallVmName')]"
+                    },
+                    "imageSku": {
+                        "value": "[parameters('firewallModel')]"
+                    },
+                    "vmSize": {
+                        "value": "[parameters('firewallVmSize')]"
+                    },
+                    "virtualNetworkName": {
+                        "value": "[reference('SetupVNET').outputs.vnetName.value]"
+                    },
+                    "virtualNetworkExistingRGName": {
+                        "value": "[variables('rgname')]"
+                    },
+                    "subnet0Name": {
+                        "value": "[parameters('MgmtSubnetName')]"
+                    },
+                    "subnet1Name": {
+                        "value": "[parameters('untrustedSubnetName')]"
+                    },
+                    "subnet2Name": {
+                        "value": "[parameters('trustedSubnetName')]"
+                    },
+                    "subnetLBName": {
+                        "value": "[parameters('appGatewaySubnetName')]"
+                    },
+                    "subnet0Prefix": {
+                        "value": "[parameters('mgmtSubnetPrefix')]"
+                    },
+                    "subnet1Prefix": {
+                        "value": "[parameters('untrustedSubnetPrefix')]"
+                    },
+                    "subnet2Prefix": {
+                        "value": "[parameters('trustedSubnetPrefix')]"
+                    },
+                    "subnetLBPrefix": {
+                        "value": "[parameters('appGatewaySubnetPrefix')]"
+                    },
+                    "adminUsername": {
+                        "value": "[parameters('username')]"
+                    },
+                    "adminPassword": {
+                        "value": "[parameters('password')]"
+                    },
+                    "baseUrl": {
+                        "value": "[variables('baseUrl')]"
+                    },
+                    "MgmtPublicIPAddressName": {
+                        "value": "[parameters('MgmtPublicIPAddressName')]"
+                    },
+                    "storageAccountName": {
+                        "value": "[reference('SettingUpStorageAccount').outputs.sid.value]"
+                    },
+                    "storageAccountNewOrExisting": {
+                        "value": "[parameters('storageAccountNewOrExisting')]"
+                    },
+                    "storageAccountType": {
+                        "value": "[parameters('storageAccountType')]"
+                    },
+                    "authenticationType": {
+                        "value": "[parameters('authenticationType')]"
+                    },
+                    "sshKey": {
+                        "value": "[parameters('sshPublicKey')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "SetupPublicLoadBalancer",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/SetupVNET",
+                "Microsoft.Resources/deployments/SetupVMSeries"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('publicLBURL')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "lbName": {
+                        "value": "[parameters('appGatewayName')]"
+                    },
+                    "publicIPAddressName": {
+                        "value": "[parameters('appGatewayDnsName')]"
+                    },
+                    "vnetName": {
+                        "value": "[reference('SetupVNET').outputs.vnetName.value]"
+                    },
+                    "subnetName": {
+                        "value": "[parameters('appGatewaySubnetName')]"
+                    },
+                    "backendIPAddresses": {
+                        "value": "[reference('SetupVMSeries').outputs.UntrustPrivateIPAddresses.value]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "SetupInternalLoadBalancer",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "dependsOn": [
+                "Microsoft.Resources/deployments/SetupVNET",
+                "Microsoft.Resources/deployments/SetupVMSeries"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('privateLBURL')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "storageAccountName": {
+                        "value": "[reference('SettingUpStorageAccount').outputs.sid.value]"
+                    },
+                    "virtualNetworkName": {
+                        "value": "[reference('SetupVNET').outputs.vnetName.value]"
+                    },
+                    "virtualNetworkExistingRGName": {
+                        "value": "[variables('rgname')]"
+                    },
+                    "lbName": {
+                        "value": "[parameters('internalLoadBalancerName')]"
+                    },
+                    "adminUsername": {
+                        "value": "[parameters('username')]"
+                    },
+                    "adminPassword": {
+                        "value": "[parameters('password')]"
+                    },
+                    "sshKey": {
+                        "value": "[parameters('sshPublicKey')]"
+                    },
+                    "subnetName": {
+                        "value": "[parameters('backendSubnetName')]"
+                    },
+                    "frontendSubnetName": {
+                        "value": "[parameters('trustedSubnetName')]"
+                    },
+                    "vmSize": {
+                        "value": "[parameters('backendVmSize')]"
+                    },
+                    "baseUrl": {
+                        "value": "[variables('baseUrl')]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}

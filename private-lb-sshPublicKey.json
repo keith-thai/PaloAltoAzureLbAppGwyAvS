@@ -212,7 +212,7 @@
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[concat(parameters('vmNamePrefix'), substring(uniqueString(resourceGroup().id), 0, 4), '-', copyindex())]",
+      "name": "[concat(parameters('vmNamePrefix'),  copyindex())]",
       "copy": {
         "name": "virtualMachineLoop",
         "count": "[variables('numberOfInstances')]"
@@ -276,7 +276,7 @@
       }
     },
     {
-    "name": "[concat(parameters('vmNamePrefix'), substring(uniqueString(resourceGroup().id), 0, 4), '-', copyindex(), '/installcustomscript')]",
+    "name": "[concat(parameters('vmNamePrefix'),  copyindex(), '/installcustomscript')]",
     "type": "Microsoft.Compute/virtualMachines/extensions",
       "copy": {
         "name": "apacheLoop",

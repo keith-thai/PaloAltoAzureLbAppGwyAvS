@@ -22,12 +22,25 @@
         "Description": "The type of the Storage Account created"
       },
       "defaultValue": "Standard_LRS"
-    }
+    },
   },
-  "resources": [],
+  "variables": {
+    "stname": "[parameters('storageAccountName')]"
+  },
+  "resources": [
+    {
+	"type": "Microsoft.Storage/storageAccounts",
+        "name": "[variables('stname')]",
+	"apiVersion": "2015-06-15",
+	"location": "[parameters('location')]",
+	"properties": {
+		"accountType": "[parameters('storageAccountType')]"
+	}
+     }
+  ],
   "outputs": {
     "sid": {
-      "value": "[parameters('storageAccountName')]",
+      "value": "[variables('stname')]",
       "type": "string"
     }
   }

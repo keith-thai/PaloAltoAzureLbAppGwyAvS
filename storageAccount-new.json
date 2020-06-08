@@ -43,5 +43,4 @@
       "value": "[variables('stname')]",
       "type": "string"
     }
-  }
-}
+  }}

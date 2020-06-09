@@ -22,70 +22,70 @@
     },
     "subnet0Name": {
       "type": "string",
-      "defaultValue": "VNET-WUS2-Hub-Mgmt",
+      "defaultValue": "SNET-WUS2-Hub-Mgmt",
       "metadata": {
         "description": "Subnet for Management"
       }
     },
     "subnet1Name": {
       "type": "string",
-      "defaultValue": "VNET-WUS2-Hub-Untrust",
+      "defaultValue": "SNET-WUS2-Hub-Untrust",
       "metadata": {
         "description": "Subnet for Untrust"
       }
     },
     "subnet2Name": {
       "type": "string",
-      "defaultValue": "VNET-WUS2-Hub-Trust",
+      "defaultValue": "SNET-WUS2-Hub-Trust",
       "metadata": {
         "description": "Subnet for Trust"
       }
     },
     "subnetLBName": {
       "type": "string",
-      "defaultValue": "UntrustLB",
+      "defaultValue": "SNET-WUS2-Hub-UntrustLB",
       "metadata": {
         "description": "Subnet for App Gateway"
       }
     },
     "subnetWWWName": {
       "type": "string",
-      "defaultValue": "backendSubnet",
+      "defaultValue": "SNET-WUS2-Hub-Backend",
       "metadata": {
         "description": "Subnet for backend WWW"
       }
     },
     "subnet0Prefix": {
       "type": "string",
-      "defaultValue": "10.0.0.0/24",
+      "defaultValue": "10.0.4.0/24",
       "metadata": {
         "description": "Mgmt subnet CIDR"
       }
     },
     "subnet1Prefix": {
       "type": "string",
-      "defaultValue": "10.0.1.0/24",
+      "defaultValue": "10.0.2.0/24",
       "metadata": {
         "description": "Untrust subnet CIDR"
       }
     },
     "subnet2Prefix": {
       "type": "string",
-      "defaultValue": "10.0.2.0/24",
+      "defaultValue": "10.0.3.0/24",
       "metadata": {
         "description": "Trust subnet CIDR"
       }
     },
     "subnetLBPrefix": {
       "type": "string",
-      "defaultValue": "10.0.3.0/24",
+      "defaultValue": "10.0.3.0/26",
       "metadata": {
         "description": "App Gateway CIDR"
       }
     },
     "subnetWWWPrefix": {
       "type": "string",
-      "defaultValue": "10.0.4.0/24",
+      "defaultValue": "10.0.5.0/24",
       "metadata": {
         "description": "backend WWW CIDR"
       }

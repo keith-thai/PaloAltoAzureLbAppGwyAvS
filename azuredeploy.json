@@ -4,7 +4,7 @@
     "parameters": {
         "networkSecurityGroupName": {
             "type": "string",
-            "defaultValue": "NSG-WUS2-Mgmt",
+            "defaultValue": "NSG-WUS2-Hub",
             "metadata": {
                 "description": "Network Security Group Name"
             }
@@ -43,49 +43,49 @@
         },
         "MgmtSubnetName": {
             "type": "string",
-            "defaultValue": "VNET-WUS2-Mgmt",
+            "defaultValue": "SNET-WUS2-Hub-Mgmt",
             "metadata": {
                 "description": "Subnet for Management Network"
             }
         },
         "mgmtSubnetPrefix": {
             "type": "string",
-            "defaultValue": "10.0.0.0/24",
+            "defaultValue": "10.0.4.0/24",
             "metadata": {
                 "description": "CIDR for Management Network"
             }
         },
         "untrustedSubnetName": {
             "type": "string",
-            "defaultValue": "VNET-WUS2-Untrust",
+            "defaultValue": "SNET-WUS2-Hub-Untrust",
             "metadata": {
                 "description": "Subnet for Untrusted Network"
             }
         },
         "untrustedSubnetPrefix": {
             "type": "string",
-            "defaultValue": "10.0.1.0/24",
+            "defaultValue": "10.0.2.0/24",
             "metadata": {
-                "description": "CIDR for VNET-WUS2-Untrusted Network"
+                "description": "CIDR for SNET-WUS2-Hub-Untrusted Network"
             }
         },
         "trustedSubnetName": {
             "type": "string",
-            "defaultValue": "VNET-WUS2-Trust",
+            "defaultValue": "SNET-WUS2-Hub-Trust",
             "metadata": {
-                "description": "Subnet for VNET-WUS2-Trusted Network"
+                "description": "Subnet for SNET-WUS2-Hub-Trusted Network"
             }
         },
         "trustedSubnetPrefix": {
             "type": "string",
-            "defaultValue": "10.0.2.0/24",
+            "defaultValue": "10.0.3.0/24",
             "metadata": {
-                "description": "CIDR for VNET-WUS2-Trusted Network"
+                "description": "CIDR for SNET-WUS2-Hub-Trusted Network"
             }
         },
         "appGatewayName": {
             "type": "string",
-            "defaultValue": "AGW-WUS2",
+            "defaultValue": "AGW-WUS2-Hub",
             "metadata": {
                 "description": "App Gateway name - used to identify resource in Azure portal"
             }
@@ -105,14 +105,14 @@
         },
         "appGatewaySubnetPrefix": {
             "type": "string",
-            "defaultValue": "10.0.3.0/24",
+            "defaultValue": "10.0.5.0/24",
             "metadata": {
                 "description": "CIDR for App Gateway"
             }
         },
         "internalLoadBalancerName": {
             "type": "string",
-            "defaultValue": "LB-WUS2-Internal",
+            "defaultValue": "LB-WUS2-Hub-Internal",
             "metadata": {
                 "description": "Internal Load Balancer name - used to identify resource in Azure portal"
             }
